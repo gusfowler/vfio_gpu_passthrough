@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#handle modprobe
+mv /etc/modprobe.d/vfio.conf /etc/modprobe.d/vfio.bak
+mv /etc/modprobe.d/blacklist.conf /etc/modprobe.d/blacklist.bak
+
+#handle grub
+cp /root/grub_no_gpu_passthrough /etc/default/grub
+update-grub
+
+echo "ENSURE NO VMS THAT USE GPU-VFIO ARE SET TO AUTOSTART, then reboot"

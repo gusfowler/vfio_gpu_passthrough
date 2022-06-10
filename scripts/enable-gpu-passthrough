@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#handle modprobe
+mv /etc/modprobe.d/vfio.bak /etc/modprobe.d/vfio.conf
+mv /etc/modprobe.d/blacklist.bak /etc/modprobe.d/blacklist.conf
+
+#handle grub
+cp /root/grub_gpu_passthrough /etc/default/grub
+update-grub
+
+echo "GPU PASSTHROUGH ENABLED, reboot to take effect, make sure have remote access!!!"
